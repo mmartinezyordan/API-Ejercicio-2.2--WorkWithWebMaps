@@ -50,32 +50,41 @@ require([
              * Step: Create a map using a web map ID
             */
 
-            arcgisUtils.createMap(webmapId,"cpCenter").then(function(response){
-                mapMain = response.map;
+           arcgisUtils.createMap(webmapId, "cpCenter").then(function (response) {
+
+            mapMain = response.map;
+
+
 
             var basemapGallery = new BasemapGallery({
-                showArcGISBasemaps : true,
-                map : mapMain}, "basemapGallery");
-                basemapGallery.startup();
-            });
 
-				/*
-				 * Step: Get the map from the response
-				*/
-				
-				
-				/*
-                 * Step: update the Legend
-				*/
-                legendLayers = arcgisUtils.getlegendLayers(response);
-                var dijitLegend = new Legend({
-                    map: mapMain,
-                    arrangement: Legend.ALIGN_RIGHT,
-                    layerInfos : legendLayers,
-                }, "divLegend");
-                dijitLegend.startup();
-                
-            //});   
+                showArcGISBasemaps: true,
+
+                map: mapMain
+
+            }, "basemapGallery");
+
+            basemapGallery.startup();
+
+
+
+            legendLayers = arcgisUtils.getLegendLayers(response);
+
+            var dijitLegend = new Legend({
+
+                map: mapMain,
+
+                arrangement: Legend.ALIGN_RIGHT,
+
+                layerInfos: legendLayers
+
+            }, "divLegend");
+
+            dijitLegend.startup();
+
+          
+
+        });
 
             /*
             //create a map
